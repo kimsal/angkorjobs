@@ -16,3 +16,12 @@ class Job(db.Model):
     requirement=db.Column(db.Text,nullable=True)
     updated_at=db.Column(db.String(200),nullable=True)
     url = db.Column(db.String(300),nullable=True)
+
+if __name__ == '__main__':
+    app.secret_key = "dfd#@C23+"
+    app.config['DEBUG'] = True
+    app.config['SESSION_TYPE'] = 'filesystem'
+   # sess.init_app(app)
+    app.debug = True
+    manager.run()
+    app.run()
