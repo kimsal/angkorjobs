@@ -15,9 +15,10 @@ def page_not_found(e):
 	return "Page not found 404"
 	return render_template(template+"/404.html")
 @app.route('/')
-def index():
+@app.route('/<pagination>')
+def index(pagination=1):
 	limit=30
-	jobs = Job.query.order_by(Job.id).limit(limit)
+	jobs = Job.query.order_by(Job.id).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	#return str(jobs)
 	return render_template("index.html",page_name='home',jobs=jobs)
 

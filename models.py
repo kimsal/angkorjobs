@@ -12,9 +12,11 @@ class Job(db.Model):
     location= db.Column(db.String(500),nullable=True)
     logo=db.Column(db.String(500),nullable=True)
     title=db.Column(db.String(500),nullable=True) #,unique=True
+    category=db.Column(db.String(120),nullable=True) #,unique=True
     description=db.Column(db.Text,nullable=True)
     requirement=db.Column(db.Text,nullable=True)
     updated_at=db.Column(db.String(200),nullable=True)
+    contract_type = db.Column(db.String(200),nullable=True)
     url = db.Column(db.String(300),nullable=True)
 
 if __name__ == '__main__':
