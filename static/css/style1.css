@@ -27,7 +27,7 @@ body{
     overflow: hidden;
 }
 .navbar-brand{
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 600;
 }
 .myrow{
@@ -572,4 +572,40 @@ border-radius: 3px;
 }
 .nv1{
   background-color: white;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+     background-color: #EE543A;
+}
+.navbar-inverse .navbar-toggle {
+     border-color:#EE543A;
+         padding: 0px;
+    margin-top: 17px;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+     border-color: #EE543A;
+}
+.container-fluid{
+  padding: 0px;
+}
+.navbar-inverse .navbar-toggle {
+     border-color:#EE543A;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 24px;
+    height: 5px;
+    border-radius: 1px;
+}
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+     margin-right: 0px; 
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
