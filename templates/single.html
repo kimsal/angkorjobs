@@ -1,0 +1,52 @@
+{% include 'header.html' %} 
+	<div class="all_jobs" id="all_jobs">
+		{%for job in jobs%}
+		<div class="row myrow mybox1 borderight" style="padding-left:14px;padding-right:14px;">
+			<a href="{{job.url}}" target="_blank">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border"
+					style="border-bottom: 1px solid #d8d8d8;padding: 0px;">
+					    <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 mypad ">
+					    	<img src="{{job.logo}}" class="img-responsive" style="padding:0px;margin-top: 13px;border-top:1px solid thin">
+					    	<br>
+					    </div>
+					    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 mypad">
+					    	<h4 class="mytitle">
+					    		{{job.title}}
+					    	</h4>
+					    	<small style="color: #a8a6a6;">
+					    		<i class="fa fa-calendar" aria-hidden="true"></i>
+						    	{{job.updated_at if job.updated_at != None}}
+						    	<!-- /<span >400$</span> -->
+						    	<span>( {{job.category if job.category != None}} ) | ( {{job.contract_type if job.contract_type != None}} )</span>
+						    </small>
+						    <br>
+					    	<p style="margin-top:5px;">
+					    		{{job.description|striptags|truncate(160)}}
+					    	</p>
+					    </div>
+				</div>
+				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 save ">
+					<i class="fa fa-bookmark" aria-hidden="true"></i>
+					Save
+				</span>
+				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 share">
+					<center>	
+						<i class="fa fa-share" aria-hidden="true"></i>
+						Share
+					</center>
+				</span>
+				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 detail1">
+					<a href="{{job.url}}" title="View Detail">
+					<label class="pull-right mymy">
+					<i class="fa fa-eye" aria-hidden="true"></i>
+					Detail   
+					</label>
+					</a>
+				</span>
+			</a>
+		</div>
+		{%endfor%}
+	</div>
+</div>
+{% include 'footer.html' %} 
+			

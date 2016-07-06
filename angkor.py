@@ -66,6 +66,7 @@ def get_Job_category_location(category='',location='',pagination=1):
 		if location=='1':
 			return redirect(url_for("index"))
 		else:
+			#return '2'
 			jobs = Job.query.filter((Job.location).match("%'"+location+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	elif location=='1':
 		if category=='1':
@@ -73,11 +74,16 @@ def get_Job_category_location(category='',location='',pagination=1):
 		else:
 			jobs = Job.query.filter((Job.category).match("%'"+category+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	else:
-		jobs=''
-		#jobs = Job.query.filter((Job.category).match("%'"+category+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
+		jobs = Job.query.filter((Job.category).match("%'"+category+"'%"),(Job.location).match("%'"+location+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	serialized = json.dumps([job.to_Json() for job in jobs])
 	return serialized
 
+@app.route('/job/<title>', methods=['GET'])
+@app.route('/job/<title>/', methods=['GET'])
+def single(title=''):
+	title=title.replace(' ','+')
+	jobs = Job.query.filter((Job.title).match("%'"+title+"'%")).all()
+	return render_template('single.html',jobs=jobs)
 if __name__ == '__main__':
 	 app.run(debug = True)
 

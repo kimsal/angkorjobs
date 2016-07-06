@@ -1,201 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Angkorjob | Job search engine in Cambodia</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-	<script type="text/javascript" src="/static/js/jquery.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/static/js/script.js"></script>
-	<link rel="stylesheet" type="text/css" href="/static/css/style1.css">
-	<meta name="keywords" content="Job Cambodia,internship in Phnom Penh, Siem Reab, BattamBong,Looking for a job?,job seekers,"/>
-	<meta name="description" content="angkorjob is a job search engine in Cambodia, WE provide jobs in Cambodia"/>
-	<link href="/images/branding/product/ico/googleg_lodp.ico" rel="shortcut icon">
-</head>
-<body>
-	<!--banner-->
-	<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 banner">
-		<div class="container">
-			<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
-		        <!--navbar-->
-		        <div class="col-xs-12 col-sm-11 col-md-12 col-lg-11">
-				    <nav class="navbar navbar-inverse" style="background-color:#EE543A;">
-					  	<div class="container-fluid">
-							 	<div class="navbar-header" style="padding:0px;">
-							      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="padding:0px;">
-							        <span class="sr-only">Toggle navigation</span>
-							        <span class="icon-bar"></span>
-							        <span class="icon-bar"></span>
-							        <span class="icon-bar"></span>
-							      </button>
-							     	 <a class="navbar-brand" href="#" style="color:white;padding-left:0px;">AngkorJobs.com</a>
-							    </div>
-							    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-							      <!-- <ul class="nav navbar-nav navbar-right">
-							        <li><a href="#" style="color:black;">About Us</a></li>
-							      </ul> -->
-							    </div>
-						</div>
-					</nav>
+{% include 'header.html' %} 
+	<div class="all_jobs" id="all_jobs">
+		{%for job in jobs%}
+		<div class="row myrow mybox1 borderight" style="padding-left:14px;padding-right:14px;">
+			<a href="{{job.url}}" target="_blank">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border"
+					style="border-bottom: 1px solid #d8d8d8;padding: 0px;">
+					    <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 mypad ">
+					    	<img src="{{job.logo}}" class="img-responsive" style="padding:0px;margin-top: 13px;border-top:1px solid thin">
+					    	<br>
+					    </div>
+					    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 mypad">
+					    	<h4 class="mytitle">
+					    		{{job.title}}
+					    	</h4>
+					    	<small style="color: #a8a6a6;">
+					    		<i class="fa fa-calendar" aria-hidden="true"></i>
+						    	{{job.updated_at if job.updated_at != None}}
+						    	<!-- /<span >400$</span> -->
+						    	<span>( {{job.category if job.category != None}} ) | ( {{job.contract_type if job.contract_type != None}} )</span>
+						    </small>
+						    <br>
+					    	<p style="margin-top:5px;">
+					    		{{job.description|striptags|truncate(160)}}
+					    	</p>
+					    </div>
 				</div>
-				<!--end navbar-->
-			</div>
-    	</div>
+				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 save ">
+					<i class="fa fa-bookmark" aria-hidden="true"></i>
+					Save
+				</span>
+				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 share">
+					<center>	
+						<i class="fa fa-share" aria-hidden="true"></i>
+						Share
+					</center>
+				</span>
+				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 detail1">
+					<a href="{{job.url}}" title="View Detail">
+					<label class="pull-right mymy">
+					<i class="fa fa-eye" aria-hidden="true"></i>
+					Detail   
+					</label>
+					</a>
+				</span>
+			</a>
+		</div>
+		{%endfor%}
 	</div>
-	<!--end banner-->
-	<div class="container" style="padding:0px;">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 box1">
-			<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 hidden-xs">
-			</div>
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7" style="padding:0px;">
-				<div class="row mycat" >
-					<div class="col-xs-12 col-sm-6 selectcat1">
-			           <!--  <a class="btn btn-default btn-select">
-			                <input type="hidden" class="btn-select-input" id="" name="" value="" />
-			                <span class="btn-select-value">Select an Item</span>
-			                <span class='btn-select-arrow fa fa-chevron-down'></span>
-			                <ul>
-			                    <li class="selected">Categories </li>
-			                    {%for cat in categories%}
-									<li value="{{cat.category}}">
-										{{cat.category}}
-									</li>
-								{%endfor%}
-			                </ul>
-			            </a> -->
-			            <div class="col-xs-12 col-sm-10" style="padding:0px;">
-				        	<select name="category" id="select_category" style="width:100%;height:30px;margin-bottom:15px;background-color:white">
-				            	<option value="1">Category</option>
-				            	{%for cat in categories%}
-				            		<option value="{{cat.category}}">
-				            		{{cat.category}}
-				            		</option>
-				            	{%endfor%}
-				            </select>
-				        </div>
-			        </div>
-			        <div class="col-xs-12 col-sm-6 selectcat1">
-			            <!-- <a class="btn btn-default btn-select">
-			                <input type="hidden" class="btn-select-input" id="" name="" value="" />
-			                <span class="btn-select-value">Select an Item</span>
-			                <span class='btn-select-arrow fa fa-chevron-down' ></span>
-			                <ul>
-			                    <li class="selected">Location</li>
-			                    {%for locat in locations%}
-			                    	<li value="{{locat.location}}">
-			                    		{{locat.location}}
-			                    	</li>
-			                    {%endfor%}
-			                </ul>
-			            </a> -->
-			            <div class="col-xs-12 col-sm-10" style="padding:0px;">
-				        	<select name="location" id="select_location" style="width:100%;height:30px;margin-bottom:15px;background-color:white">
-				            	<option value="1">Location</option>
-				            	{%for l in locations%}
-				            		<option value="{{l.location}}">
-				            		{{l.location}}
-				            		</option>
-				            	{%endfor%}
-				            </select>
-				        </div>
-			        </div>
-			        <div class="col-xs-12 col-sm-12 col-md-12 selectcatsearch">
-				        <form role="search" name="s" method="GET" action="/jobs/search/"/>      
-				            <div class="input-group"> 
-				            	<input class="form-control" id="appendedInput" type="text" placeholder="Search..." name="q" style="border-radius:0px;" value="{{search_str}}" required> 
-
-						        <div class="input-group-btn">
-						          <input type="submit" value="Search" class="btn btn-primary"/>
-						            <!-- <span class="fa fa-search" aria-hidden="true" >
-						            	
-						            </span> -->
-						          <!-- </button>              -->
-						        </div> 
-						    </div>
-						</form>
-			        </div>
-				</div>
-				<div class="all_jobs" id="all_jobs">
-					{%for job in jobs%}
-					<div class="row myrow mybox1 borderight" style="padding-left:14px;padding-right:14px;">
-						<a href="{{job.url}}" target="_blank">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border"
-								style="border-bottom: 1px solid #d8d8d8;padding: 0px;">
-								    <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 mypad ">
-								    	<img src="{{job.logo}}" class="img-responsive" style="padding:0px;margin-top: 13px;border-top:1px solid thin">
-								    	<br>
-								    </div>
-								    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 mypad">
-								    	<h4 class="mytitle">
-								    		{{job.title}}
-								    	</h4>
-								    	<small style="color: #a8a6a6;">
-								    		<i class="fa fa-calendar" aria-hidden="true"></i>
-									    	{{job.updated_at if job.updated_at != None}}
-									    	<!-- /<span >400$</span> -->
-									    	<span>( {{job.category if job.category != None}} ) | ( {{job.contract_type if job.contract_type != None}} )</span>
-									    </small>
-									    <br>
-								    	<p style="margin-top:5px;">
-								    		{{job.description|striptags|truncate(160)}}
-								    	</p>
-								    </div>
-							</div>
-							<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 save ">
-								<i class="fa fa-bookmark" aria-hidden="true"></i>
-								Save
-							</span>
-							<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 share">
-								<center>	
-									<i class="fa fa-share" aria-hidden="true"></i>
-									Share
-								</center>
-							</span>
-							<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 detail1">
-								<a href="{{job.url}}" title="View Detail">
-								<label class="pull-right mymy">
-								<i class="fa fa-eye" aria-hidden="true"></i>
-								Detail   
-								</label>
-								</a>
-							</span>
-						</a>
-					</div>
-					{%endfor%}
-				</div>
-			</div>
-			<!--recommended-->
-			<div class="col-md-3 col-sm-3 col-lg-3 hidden-xs">
-				<span class="nav_bar">
-	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
-	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
-	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
-	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
-	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
-	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
-	         	</span>
-            </div>
-        </div>
-	</div>
-	<!--footer start from here-->
-	<br>
-	<script type="text/javascript">
-		$(document).ready(function() {
-		  $(window).scroll(function () {
-		      //console.log($(window).scrollTop())
-		    if ($(window).scrollTop() > 50) {
-		      $('.nav_bar').addClass('navbar-fixed');
-
-		    }
-		    if ($(window).scrollTop() < 100) {
-		      $('.nav_bar').removeClass('navbar-fixed');
-		    }
-		  });
-		});
-	</script>
-
-	<script type="text/javascript">
+</div>
+<script type="text/javascript">
 	var pagin=1;
 	var html='';
 	var url='';
@@ -234,17 +87,20 @@
 		}
 	});
 	function getDataFromLocationCategory(url_search){
-		//alert(search_category+":"+search_location);
+		console.log(search_category+":"+search_location+":"+url_search);
+		wrap.innerHTML='';
 		$.ajax({
           type: "GET",
           url: url_search,
           success: function(response) {
-            //jobs=JSON.parse(response);
-            jobs=response;
-           // console.log("result "+pagin+" = "+response);
+            jobs=JSON.parse(response);
+            //jobs=response;
+            console.log("result "+pagin+" = "+response.length);
             for(var i=0;i<jobs.length;i++) {
-            	//console.log(jobs[i].title);
-               html='';
+            	console.log(jobs[i].title);
+            	//console.log(jobs[i]);
+            	//html='d - ';
+                html="<div class='row myrow mybox1 borderight' style='padding-left:14px;padding-right:14px;'><a href="+jobs[i].url+" target='_blank'><div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 border' style='border-bottom: 1px solid #d8d8d8;padding: 0px;'><div class='hidden-xs col-sm-2 col-md-2 col-lg-2 mypad '><img src="+jobs[i].logo+" class='img-responsive' style='padding:0px;margin-top: 13px;border-top:1px solid thin'><br></div><div class='col-xs-12 col-sm-10 col-md-10 col-lg-10 mypad'><h4  class='mytitle'>"+jobs[i].title+"</h4><small style='color: #a8a6a6;'><i class='fa fa-calendar' aria-hidden='true'></i>"+jobs[i].updated_at+"<span>( "+jobs[i].category+" ) | ( "+jobs[i].contract_type+" )</span></small><br><p style='margin-top:5px;'> "+jobs[i].description.substring(0,120)+"...</p></div></div><span class='col-xs-4 col-sm-4 col-md-4 col-lg-4 save '><i class='fa fa-bookmark' aria-hidden='true'></i>Save</span><span class='col-xs-4 col-sm-4 col-md-4 col-lg-4 share'><center><i class='fa fa-share' aria-hidden='true'></i>Share</center></span><span class='col-xs-4 col-sm-4 col-md-4 col-lg-4 detail1'><a href="+jobs[i].url+" title='View Detail'><label class='pull-right mymy'><i class='fa fa-eye' aria-hidden='true'></i>Detail</label></a></span></a></div>;";
                wrap.innerHTML+=html;  
             }
           }
@@ -256,10 +112,10 @@
 	    var yOffset = window.pageYOffset; 
 	    var y = yOffset + window.innerHeight;
 	    if ((window.innerHeight + window.scrollY)+300 >= document.body.scrollHeight) {
-	    	if(search_category!='1'&&search_location!='1'){
+	    	if(search_category!='1'|| search_location!='1'){
 	    		//select page
 		    	url='/search/'+search_category+'/'+search_location+'/'+pagin;
-		    	wrap.innerHTML='';
+		    	//wrap.innerHTML='';
 		    }
 		    else{
 		    	//search or index page
@@ -268,7 +124,7 @@
 		    	else if(page_type=="index")
 		    		url="/pagin/"+pagin;
 		    }
-	    	//alert(url);
+	    	//console.log(url);
 	    	if(continue_load){
 	    		pagin++;
 		        $.ajax({
@@ -280,7 +136,7 @@
 	                if(jobs.length<30){
 	                	continue_load=false;
 	                }
-	                alert(continue_load);
+	                //alert(continue_load);
 	               // console.log("result "+pagin+" = "+response);
 	                for(var i=0;i<jobs.length;i++) {
 	                	//console.log(jobs[i].title);
@@ -297,5 +153,4 @@
 	//end scroll event
 	
 	</script>
-</body>	
-</html>
+{% include 'footer.html' %} 
