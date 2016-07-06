@@ -1,1 +1,7 @@
-pip install flask_whooshalchemy
+sudo pip install flask_sqlalchemy
+sudo pip install flask_migrate
+sudo pip install Flask-Passlib
+sudo pip install flask_httpauth
+sudo pip install slugify
+sudo pip install wtforms
+ sudo apt-get install python-psycopg2

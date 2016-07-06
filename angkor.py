@@ -25,7 +25,8 @@ def page_not_found(e):
 @app.route('/jobs/search/', methods=['GET'])
 def search(pagination=1):
 	search=(str(request.args['q']))#.split()
-	search=search.strip(" ")
+	search=search.replace(" ",'+')
+	#return search
 	if search=="":
 		return redirect(url_for("index"))
 	#return search
@@ -51,8 +52,29 @@ def get_Job_Index(pagination=1):
 @app.route('/jobs/search/<pagination>', methods=['GET'])
 @app.route('/jobs/search/<pagination>/', methods=['GET'])
 def get_Job_search(pagination=1):
-	search=(request.args['q']).strip(" ")
+	search=(request.args['q']).replace(" ",'+')
 	jobs = Job.query.filter((Job.description).match("'%"+search+"%'"),(Job.title).match("%'"+search+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
+	serialized = json.dumps([job.to_Json() for job in jobs])
+	return serialized
+@app.route('/search/<category>/<location>/<pagination>', methods=['GET'])
+@app.route('/search/<category>/<location>/<pagination>', methods=['GET'])
+def get_Job_category_location(category='',location='',pagination=1):
+	#==1 if not selected
+	category=category.replace(" ",'+')
+	location=location.replace(" ",'+')
+	if category=='1':
+		if location=='1':
+			return redirect(url_for("index"))
+		else:
+			jobs = Job.query.filter((Job.location).match("%'"+location+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
+	elif location=='1':
+		if category=='1':
+			return redirect(url_for("index"))
+		else:
+			jobs = Job.query.filter((Job.category).match("%'"+category+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
+	else:
+		jobs=''
+		#jobs = Job.query.filter((Job.category).match("%'"+category+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	serialized = json.dumps([job.to_Json() for job in jobs])
 	return serialized
 

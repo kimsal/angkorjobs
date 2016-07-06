@@ -1,9 +1,9 @@
 from database import *
 from sqlalchemy.orm import relationship
 from slugify import slugify
-from wtforms.widgets import * #TextArea
+#from wtforms.widgets import * #TextArea
 from wtforms import * #TextField, IntegerField, TextAreaField, SubmitField, RadioField,SelectField,validators, ValidationError
-import wtforms.widgets.core
+#import wtforms.widgets.core
 import sys
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 if sys.version_info >= (3, 0):
