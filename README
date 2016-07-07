@@ -1,7 +1,10 @@
+sudo systemctl restart angkorjobs.service
+sudo systemctl enable file.service 
+
 sudo pip install flask_sqlalchemy
 sudo pip install flask_migrate
 sudo pip install Flask-Passlib
 sudo pip install flask_httpauth
 sudo pip install slugify
 sudo pip install wtforms
- sudo apt-get install python-psycopg2
+sudo apt-get install python-psycopg2
