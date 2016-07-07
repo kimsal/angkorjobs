@@ -188,17 +188,18 @@ p{
     line-height: 16px;
     color: #474646;
 }
-.save{
+/*.save{
   margin-top: 15px;
   color: #EE543A;
-}
-.share{
+}*/
+.share,.share a{
   margin-top: 15px;
  color: #EE543A;
 }
 .detail1{
   margin-top: 15px;
   color: #EE543A;
+  cursor: pointer;
 }
 small{
   font-size: 70%;

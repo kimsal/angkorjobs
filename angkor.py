@@ -12,10 +12,11 @@ from models import *
 from flask.json import jsonify
 
 #client
+domain='http://www.angkorjobs.com/'
 limit=30
 @app.context_processor
 def inject_dict_for_all_templates():
-    return dict(categories = Job.query.with_entities(Job.category).distinct('category'),locations = Job.query.with_entities(Job.location).distinct('location'))
+    return dict(domain=domain,categories = Job.query.with_entities(Job.category).distinct('category'),locations = Job.query.with_entities(Job.location).distinct('location'))
 
 @app.errorhandler(404)
 def page_not_found(e):
