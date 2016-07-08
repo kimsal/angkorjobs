@@ -28,8 +28,8 @@ body{
 }
 
 .navbar-brand{
-  font-size: 19px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 800;
 }
 .myrow{
     margin: 5px;
@@ -626,9 +626,9 @@ padding-bottom: 0px;
 
 .navbar-toggle .icon-bar {
     display: block;
-    width: 24px;
+    width: 19px;
     height: 5px;
-    border-radius: 1px;
+    border-radius: 0px;
 }
 .navbar-toggle {
     position: relative;
