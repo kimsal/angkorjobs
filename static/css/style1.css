@@ -15,26 +15,32 @@ body{
 }
 .banner{
     width: 100%;
-    min-height: 80px;
-   background-color:#EE543A;
+    /*min-height: 80px;*/
+   background-color: #2CC990;
 }
 .navbar-inverse{
-  background-color: #F6F7F2;
+  background-color: #2CC990;
 }
 .header {
-    padding-top: 50px;
-    background-color: #eee;
+    /*padding-top: 50px;*/
+    background-color: #2CC990;
     overflow: hidden;
 }
+
 .navbar-brand{
-  font-size: 27px;
+  font-size: 19px;
   font-weight: 600;
 }
 .myrow{
     margin: 5px;
     border:1px solid black thin;
 }
-
+.form-control-no-border:focus {
+  border-color:#ccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
      border-color:none; 
 }
@@ -172,9 +178,15 @@ font-size: 12px;
 line-height: 16px;
 }
 .navbar-inverse {
-    background-color: #43413c;
+    background-color:rgb(44, 201, 144) none repeat scroll 0% 0%;
     border:#43413c;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
+}
+.navbar {
+    position: relative;
+    min-height: 43px;
+    margin-bottom: 3px;
+    border: 1px solid transparent;
 }
 .panel-primary > .panel-heading {
     color: #695A5A;
@@ -188,18 +200,20 @@ p{
     line-height: 16px;
     color: #474646;
 }
-/*.save{
-  margin-top: 15px;
+.save{
+  margin-top: 13px;
   color: #EE543A;
-}*/
+  font-size: 12px;
+}
 .share,.share a{
   margin-top: 15px;
  color: #EE543A;
+ font-size: 12px;
 }
 .detail1{
   margin-top: 15px;
   color: #EE543A;
-  cursor: pointer;
+  font-size: 12px;
 }
 small{
   font-size: 70%;
@@ -208,14 +222,13 @@ small{
 .mymy{
  /*background-color: #f87827;*/
 color: #EE543A;
-margin-right: 15px;
 }
 /*customizw*/
 .mytitle{
     font-family: OpenSansRegular;
     font-size: 15px;
     line-height: 20px;
-    color: #365899;
+    color:#2CC990;
   cursor: pointer;
   padding-top: 0px;
 }
@@ -335,7 +348,25 @@ border-bottom-color: #b2b2b2;
         -moz-border-radius: 3px;
         border-radius: 3px;
     }
- 
+ .form-control{
+  padding-bottom: 4px;
+  padding-left: 0px;
+  border-radius: 0px;
+ }
+ .btn-primary{
+  border-radius: 0px;
+ }
+ .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    padding-top: 10px;
+    border-radius: 14px;
+}
+ .nopadding{
+  padding-left: 0px;
+  padding-right: 0px;
+ }
     #custom-search-form button {
         border: 0;
         background: none;
@@ -517,6 +548,7 @@ border-bottom-color: #b2b2b2;
 padding: 10px;
 margin: 6px;
 border-radius: 3px;
+padding-bottom: 0px;
 }
 .selectcat1{
   margin-top: 15px;
@@ -575,21 +607,21 @@ border-radius: 3px;
   background-color: white;
 }
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-     background-color: #EE543A;
+     background-color: #2CC990;
 }
 .navbar-inverse .navbar-toggle {
-     border-color:#EE543A;
+     border-color:#2CC990;
          padding: 0px;
     margin-top: 17px;
 }
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-     border-color: #EE543A;
+     border-color: #2CC990;
 }
 .container-fluid{
   padding: 0px;
 }
 .navbar-inverse .navbar-toggle {
-     border-color:#EE543A;
+     border-color:#2CC990;
 }
 
 .navbar-toggle .icon-bar {

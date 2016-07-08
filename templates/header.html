@@ -20,7 +20,9 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1690843304512998";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
 </head>
 <body>
 	<!--banner-->
@@ -29,7 +31,7 @@
 			<div class="hidden-xs col-sm-1 col-md-1 col-lg-1"></div>
 		        <!--navbar-->
 		        <div class="col-xs-12 col-sm-11 col-md-12 col-lg-11">
-				    <nav class="navbar navbar-inverse" style="background-color:#EE543A;">
+				    <nav class="navbar navbar-inverse">
 					  	<div class="container-fluid">
 							 	<div class="navbar-header" style="padding:0px;">
 							      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="padding:0px;">
@@ -38,7 +40,8 @@
 							        <span class="icon-bar"></span>
 							        <span class="icon-bar"></span>
 							      </button>
-							     	 <a class="navbar-brand" href="#" style="color:white;padding-left:0px;">AngkorJobs.com</a>
+							     	 <a class="navbar-brand" href="#" style="color:white;padding-left:0px;">AngkorJobs.com
+							     	 </a>
 							    </div>
 							    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
 							      <!-- <ul class="nav navbar-nav navbar-right">
@@ -73,8 +76,8 @@
 								{%endfor%}
 			                </ul>
 			            </a> -->
-			            <div class="col-xs-12 col-sm-10" style="padding:0px;">
-				        	<select name="category" id="select_category" style="width:100%;height:30px;margin-bottom:15px;background-color:white">
+			            <div class="col-xs-12 col-sm-12 nopadding" >
+				        	<select class="form-control form-control-no-border"  name="category" id="select_category" >
 				            	<option value="1">Category</option>
 				            	{%for cat in categories%}
 				            		<option value="{{cat.category.replace('/',' ')}}">
@@ -98,8 +101,8 @@
 			                    {%endfor%}
 			                </ul>
 			            </a> -->
-			            <div class="col-xs-12 col-sm-10" style="padding:0px;">
-				        	<select name="location" id="select_location" style="width:100%;height:30px;margin-bottom:15px;background-color:white">
+			            <div class="col-xs-12 col-sm-12 nopadding">
+				        	<select class="form-control form-control-no-border"  name="location" id="select_location">
 				            	<option value="1">Location</option>
 				            	{%for l in locations%}
 				            		<option value="{{l.location}}">
@@ -123,5 +126,10 @@
 						        </div> 
 						    </div>
 						</form>
+						<center>
+							<small style="padding-bottom:0px;">
+								<p style="padding-top: 8px;color:#8C7C7C;">About 2,470 results (0.49 seconds) </p>
+							</small>
+						</center>
 			        </div>
 				</div>
