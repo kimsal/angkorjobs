@@ -16,11 +16,11 @@ domain='http://www.angkorjobs.com/'
 limit=30
 @app.context_processor
 def inject_dict_for_all_templates():
-    return dict(domain=domain,categories = Job.query.with_entities(Job.category).distinct('category'),locations = Job.query.with_entities(Job.location).distinct('location'))
+    return dict(domain=domain,ads=Advertise.query.all(),categories = Job.query.with_entities(Job.category).distinct('category'),locations = Job.query.with_entities(Job.location).distinct('location'))
 
 @app.errorhandler(404)
 def page_not_found(e):
-	return "Page not found 404"
+	return "<br/><center><h1>Page not found 404<center></h1>"
 	return render_template(template+"/404.html")
 @app.route('/jobs/search/<pagination>', methods=['GET'])
 @app.route('/jobs/search/', methods=['GET'])

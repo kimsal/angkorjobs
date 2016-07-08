@@ -10,7 +10,7 @@ from passlib.apps import *
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 from flask_httpauth import HTTPTokenAuth
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']= 'postgresql://phos:phos@localhost:5432/angkorjobs'
+app.config['SQLALCHEMY_DATABASE_URI']= 'postgresql://angkorjobs:angkorjobs@localhost:5432/angkorjobs'
 auth = HTTPTokenAuth(scheme='Token')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 app.secret_key = 'Hello@AmokCamSmallworld$Cambodia&*&'

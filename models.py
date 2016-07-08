@@ -6,11 +6,6 @@ from wtforms import * #TextField, IntegerField, TextAreaField, SubmitField, Radi
 #import wtforms.widgets.core
 import sys
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-if sys.version_info >= (3, 0):
-    enable_search = False
-else:
-    enable_search = True
-    import flask.ext.whooshalchemy as whooshalchemy
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     company_name=  db.Column(db.String(500),nullable=True)
@@ -37,6 +32,14 @@ class Job(db.Model):
             contract_type=self.contract_type,
             url=self.url
             )
+class Advertise(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title=  db.Column(db.String(500),nullable=True)
+    description=db.Column(db.Text,nullable=True)
+    location= db.Column(db.String(500),nullable=True)
+    logo=db.Column(db.String(500),nullable=True)
+    url = db.Column(db.String(300),nullable=True)
+
 if __name__ == '__main__':
     app.secret_key = "dfd#@C23+"
     app.config['DEBUG'] = True
