@@ -50,6 +50,28 @@ body{
     width: 100%;
     min-height: 100vh;
 }
+.navbar-inverse .navbar-toggle {
+     border-color:#2CC990;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 19px;
+    height: 5px;
+    border-radius: 0px;
+}
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+     margin-right: 0px; 
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 .pull-middle {
     display: table-cell;
     vertical-align: middle;
@@ -620,25 +642,4 @@ padding-bottom: 0px;
 .container-fluid{
   padding: 0px;
 }
-.navbar-inverse .navbar-toggle {
-     border-color:#2CC990;
-}
 
-.navbar-toggle .icon-bar {
-    display: block;
-    width: 19px;
-    height: 5px;
-    border-radius: 0px;
-}
-.navbar-toggle {
-    position: relative;
-    float: right;
-    padding: 9px 10px;
-    margin-top: 8px;
-     margin-right: 0px; 
-    margin-bottom: 8px;
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
