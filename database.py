@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+from  sqlalchemy.sql.expression import func
 #from passlib.apps import custom_app_context as pwd_context
 from passlib.apps import * 
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)

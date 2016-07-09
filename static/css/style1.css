@@ -234,7 +234,6 @@ color: #EE543A;
 }
 .mytitle:hover{
     color: orange;
-    text-decoration: underline;
 }
 .mypostby{
     font-size: 12px;

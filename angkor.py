@@ -16,7 +16,7 @@ domain='http://www.angkorjobs.com/'
 limit=30
 @app.context_processor
 def inject_dict_for_all_templates():
-    return dict(domain=domain,ads=Advertise.query.all(),categories = Job.query.with_entities(Job.category).distinct('category'),locations = Job.query.with_entities(Job.location).distinct('location'))
+    return dict(domain=domain,ads_length=Advertise.query.count(),ads=Advertise.query.order_by(func.random()).all(),categories = Job.query.with_entities(Job.category).distinct('category'),locations = Job.query.with_entities(Job.location).distinct('location'))
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -31,19 +31,20 @@ def search(pagination=1):
 	if search=="":
 		return redirect(url_for("index"))
 	#return search
+	query_result=(Job.query.filter((Job.title).match("'%"+search+"%'"),(Job.description).match("%'"+search+"'%"))).count()
 	jobs=Job.query.filter((Job.title).match("'%"+search+"%'"),(Job.description).match("%'"+search+"'%")).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	#jobs=Job.query.search("manager").all()
 	# for job in jobs:
 	# 	print job.title
-	return render_template("index.html",jobs=jobs,search_str=search,page_type="search")
-	return str(jobs)
+	return render_template("index.html",jobs=jobs,search_str=search,page_type="search",query_result=query_result)
 
 @app.route('/<pagination>', methods=['GET'])
 @app.route('/', methods=['GET'])
 def index(pagination=1):
 	jobs = Job.query.order_by(Job.id).limit(limit).offset(int(int(int(pagination)-1)*limit))
 	#return str(jobs)
-	return render_template("index.html",page_name='home',jobs=jobs,page_type="index")
+	query_result=(Job.query.order_by(Job.id)).count()
+	return render_template("index.html",query_result=query_result,page_name='home',jobs=jobs,page_type="index")
 @app.route('/pagin/<pagination>', methods=['GET'])
 def get_Job_Index(pagination=1):
 	jobs = Job.query.order_by(Job.id).limit(limit).offset(int(int(int(pagination)-1)*limit))
