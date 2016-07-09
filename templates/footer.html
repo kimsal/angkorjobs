@@ -1,16 +1,11 @@
 <!--recommended-->
 			<div class="col-md-3 col-sm-3 col-lg-3 hidden-xs">
-				<span class="nav_bar">
+				<span class="nav_bar" footer>
 	         	<!-- <img src="/static/images/image.jpg" class="img-responsive  nv nv1">
 	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
 	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
 	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1">
 	         	<img src="/static/images/image.jpg" class="img-responsive  nv nv1"> -->
-	         	<center>
-	         		<h3><b style="color:#2CC990;text-decoration:underline;">
-	         			Partners
-	         		</b></h3>
-	         	</center>
 	         	{%for ad in ads%}
 	         	<a href="{{ad.url}}" target="_blank">
 		         	<!-- <center>
@@ -18,7 +13,7 @@
 		         			{{ad.title}}
 		         		</b>
 		         	</center> -->
-		         	<img src="/static/images/ads/{{ad.logo}}" class="img-responsive  nv nv1" title="{{ad.title}}">
+		         	<img src="/static/images/ads/{{ad.logo}}" class="img-responsive  nv nv1 ads" title="{{ad.title}}">
 		        </a>
 	         	{%endfor%}
 	         	</span>
