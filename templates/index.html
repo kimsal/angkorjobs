@@ -70,53 +70,56 @@
 		</div>
 
 		<!--advertisment-->
-		{% if check_job%4 == 0 %}
-			<div class="row myrow mybox1 borderight" style="padding-left:14px;padding-right:14px;">
-			<a href="{{ads[ads_count].url}}" target="_blank">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border" style="border-bottom: 1px solid #d8d8d8;padding: 0px;">
-					    <div class="col-sm-3 col-md-3 col-lg-3 mypad ">
-					    	<img src="/static/images/ads/{{ads[ads_count].logo}}" class="img-responsive" style="padding:0px;margin-top: 5px;border-top:1px solid thin">
-					    	<br>
-					    </div>
-					    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 mypad">
 
-					    	<h4 class="mytitle">
-					    		<span class="ads">Ad</span> 
-					    		{{ads[ads_count].title}}
-					    	</h4>
-					    	<p style="margin-top:5px;">
-					    		{{ads[ads_count].description|striptags|truncate(160)}}
-					    	</p>
-					    </div>
-				</div>
-				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 save ">
-					<i class="fa fa-bookmark" aria-hidden="true"></i>
-					Save
-				</span>
+		{%if ads_length>0%}
+			{% if check_job%4 == 0 %}
+				<div class="row myrow mybox1 borderight" style="padding-left:14px;padding-right:14px;">
+				<a href="{{ads[ads_count].url}}" target="_blank">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border" style="border-bottom: 1px solid #d8d8d8;padding: 0px;">
+						    <div class="col-sm-3 col-md-3 col-lg-3 mypad ">
+						    	<img src="/static/images/ads/{{ads[ads_count].logo}}" class="img-responsive" style="padding:0px;margin-top: 5px;border-top:1px solid thin">
+						    	<br>
+						    </div>
+						    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 mypad">
 
-				<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{domain}}job/{{ads[ads_count].title}}%2F&amp;src=sdkpreparse" title="Share to Facebook">
-				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 share">
-					<center>	
-						<i class="fa fa-share" aria-hidden="true"></i>
-						Share
-					</center>
+						    	<h4 class="mytitle">
+						    		<span class="ads">Ad</span> 
+						    		{{ads[ads_count].title}}
+						    	</h4>
+						    	<p style="margin-top:5px;">
+						    		{{ads[ads_count].description|striptags|truncate(160)}}
+						    	</p>
+						    </div>
+					</div>
+					<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 save ">
+						<i class="fa fa-bookmark" aria-hidden="true"></i>
+						Save
+					</span>
+
+					<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{domain}}job/{{ads[ads_count].title}}%2F&amp;src=sdkpreparse" title="Share to Facebook">
+					<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 share">
+						<center>	
+							<i class="fa fa-share" aria-hidden="true"></i>
+							Share
+						</center>
+					</a>
+
+					</span>
+					<a href="{{ads[ads_count].url}}" title="View Detail">
+					<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 detail1">
+						<label class="pull-right mymy">
+						<i class="fa fa-eye" aria-hidden="true"></i>
+						Detail   
+						</label>
+					</span>
+					</a>
 				</a>
-
-				</span>
-				<a href="{{ads[ads_count].url}}" title="View Detail">
-				<span class="col-xs-4 col-sm-4 col-md-4 col-lg-4 detail1">
-					<label class="pull-right mymy">
-					<i class="fa fa-eye" aria-hidden="true"></i>
-					Detail   
-					</label>
-				</span>
-				</a>
-			</a>
-		</div>
-		{% set ads_count = ads_count + 1 %}
-		{% if ads_count == ads_length %}
-			{% set ads_count=1 %}
-		{%endif%}
+			</div>
+			{% set ads_count = ads_count + 1 %}
+			{% if ads_count == ads_length %}
+				{% set ads_count=0%}
+			{%endif%}
+			{%endif%}
 		{%endif%}
 		<!--put ads-->
 		
